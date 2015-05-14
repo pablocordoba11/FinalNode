@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/finalnode');
 
 var app = express();
 
