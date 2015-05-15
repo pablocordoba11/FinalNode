@@ -1,11 +1,12 @@
-
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
+var passport = exports.passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
@@ -13,7 +14,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/finalnode');
 
-var app = express();
+var app = exports.app = express();
 
 // view engine setup
 
@@ -32,10 +33,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./auth/local-strategy.js');
 
 app.use('/', routes);
 app.use('/users', users);
 
+require('./routes/main.js');
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
