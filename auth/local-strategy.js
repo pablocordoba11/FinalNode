@@ -9,7 +9,6 @@ var passport = module.parent.exports.passport,
 	passport.deserializeUser(function(user, done){
 		done(null,user);
 	});
-	console.log("ooo")
 	passport.use('AdminLogin', new LocalStrategy(
 	{
 		usernameField: 'email',
@@ -18,6 +17,7 @@ var passport = module.parent.exports.passport,
 	function(username, password , done){
 		console.log("entra function"+ username + password);
 		Empleado.findOne({email:username}, function(err, emp){
+			console.log(emp, err, 'SA')
 			if(err) {return done(err);}
 			if(!emp){
 				return done(null,false,{message :'E-mail no valido'});
@@ -26,6 +26,7 @@ var passport = module.parent.exports.passport,
 				return done(null,false, {message:'Password incorrecto'});
 			}
 			return done(null,emp);
+			console.log(emp);
 		});
 	}
 ));

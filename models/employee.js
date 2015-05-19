@@ -1,13 +1,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto= require('crypto');
+// agregar foto por default
 
 var employeeSchema = new Schema({
 	nombre: String,
 	apellido: String,
 	email: String,
 	pass1: String,
-	pass2: String
+	foto: String
 
 });
 employeeSchema.pre("save",function(next){
