@@ -1,4 +1,10 @@
 extend layout
-
-block content
- h1="Panel"
+html
+  head
+   tittle="Panel"
+   link(rel="stylesheet", href='/public/components/bootstrap/dist/css/bootstrap.min.css')
+    body
+     block content
+      h1="Panel"
+       div
+        input(type='button' class=["btn btn-lg btn-primary"] value='Li0st')
