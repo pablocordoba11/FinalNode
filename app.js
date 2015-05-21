@@ -12,6 +12,24 @@ var routes = require('./routes/index');
 var users = require('./routes/user');
 var mongoose = require('mongoose');
 
+//EL BOJOOOOOO!!!!!!!
+
+//EL BOJOOOOOO!!!!!!!
+//EL BOJOOOOOO!!!!!!!
+
+
+
+//EL BOJOOOOOO!!!!!!!
+
+
+
+//EL BOJOOOOOO!!!!!!!
+
+
+
+
+
+
 mongoose.connect('mongodb://localhost/finalnode');
 
 var app = exports.app = express();
