@@ -11,8 +11,11 @@ var passport = exports.passport = require('passport');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var mongoose = require('mongoose');
+var fixtures = require('mongoose-fixtures');
 
 mongoose.connect('mongodb://localhost/finalnode');
+// carga el admin a la bd
+fixtures.load('./fixtures/admin.js');
 
 var app = exports.app = express();
 

@@ -1,6 +1,20 @@
 extends layout
 block content
-  include ./barraNavegacion.jade
-    .container
-      .panel.panel-default
-        input.btn.btn-lg.btn-success(type='submit' value='List')			
+  p
+    a(href="/panel/employees/new") New
+  table
+    tr
+      th N
+      th Name
+      th Age
+      th Options
+    - employee.forEach(function(v,i){
+    tr
+      td=i
+      td=v.nombre
+      td #{v.apellido} years
+      td
+        a(href="/panel/employees/edit/"+v._id) Edit
+        | 
+        a(href="/panel/employees/delete/"+v._id) Delete
+    - });
