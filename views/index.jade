@@ -1,0 +1,32 @@
+extend layout
+block content
+    include ./barraNavegacion.jade
+    .jumbotron
+        .container
+            .row
+                .col-md-12
+                    .panel.panel-default
+                        .panel-heading
+                            input(placeholder="Buscar")
+                        .panel-body
+                            .table-responsive
+                                table.table.table-hover
+                                    thead
+                                        tr
+                                            th #
+                                            th Nombre
+                                            th Apellido
+                                            th E-mail
+                                            th Opciones
+                                    tbody
+								        - employee.forEach(function(v,i){
+								        tr
+									       td=i
+									       td= v.nombre
+                                           td= v.apellido
+									       td= v.email
+									       td
+                                            a(href='/panel/employees/edit/'+v._id) Editar 
+										    span | 
+                                            a(href='/panel/employees/delete/'+v._id) Eliminar
+                                        -};    

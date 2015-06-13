@@ -1,19 +1,22 @@
 extends layout
 
 block content
-  h1= title
-  form(action='',method='post')
-    div
-      label(for='nombre') Nombre:
-      input(type='text', name='nombre', id='nombre',value=employee.nombre)
-    div
-      label(for='apellido') Apellido:
-      input(type='text', name='apellido', id='apellido',value=employee.apellido)
-    div
-      label(for='email') E-mail:
-      input(type='text', name='email', id='email',value=employee.email)
-    div
-      input(type='submit', value='Save')
-  style.
-    form label { min-width: 80px; display: inline-block; }
-    form > div { padding: 5px; }
+    include ./barraNavegacion.jade
+    .container
+        .row
+            .col-md-offset-3.col-md-6.col-md-offset-3
+                form(action='',method='post')
+                    .panel-heading
+                        h1 Editar Empleado
+                            .panel-body
+                                .form-group 
+                                    label Nombre:
+                                    input.form-control(type='text', name='nombre', id='nombre',required,value=employee.nombre)
+                                div
+                                    label(for='apellido') Apellido:
+                                    input.form-control(type='text', name='apellido', id='apellido',required,value=employee.apellido)
+                                div
+                                    label(for='email') E-mail:
+                                    input.form-control(type='email', name='email',pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id='email',required,value=employee.email)
+                                div
+                                    input.btn.btn-success.btn-block.btn-lg(type='submit', value='Save')

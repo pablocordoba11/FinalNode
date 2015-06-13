@@ -28,7 +28,7 @@ app.get('/panel',adminAuth, function(req, res){
     });
 	
 });
-app.get('/panel/employees/new',function(req, res){
+app.get('/panel/employees/new',adminAuth,function(req, res){
     res.render('newEmployee',{title:'Nuevo Empleado'});
 });
 //post new employee
@@ -36,7 +36,7 @@ app.post('/panel/employees/new',function(req, res){
     var emp = new Empleado ({nombre:req.body.nombre, apellido:req.body.apellido, email:req.body.email, pass1:req.body.pass1});
     emp.save(function(err, doc){
         if(!err){
-            res.redirect('/panel/employees'); // cambiar a la lista
+            res.redirect('/panel'); // cambiar a la lista
         }else{
             res.end(err);
         }
@@ -55,7 +55,7 @@ app.get('/panel/employees/delete/:id', function(req, res){
         }
     });
 });
-app.get('/panel/employees/edit/:id', function(req, res){
+app.get('/panel/employees/edit/:id',adminAuth, function(req, res){
     Empleado.findOne({ _id:req.params.id}, function(err, doc){
         //console.log(doc);
         if(!err){
@@ -85,3 +85,6 @@ app.post('/panel/employees/edit/:id', function(req, res){
             
     });
 });
+app.get('/index',function(req, res){
+    res.render('index',{title:'Home'})
+})

@@ -1,20 +1,29 @@
 extends layout
+
 block content
-  p
-    a(href="/panel/employees/new") New
-  table
-    tr
-      th N
-      th Name
-      th Age
-      th Options
-    - employee.forEach(function(v,i){
-    tr
-      td=i
-      td=v.nombre
-      td #{v.apellido} years
-      td
-        a(href="/panel/employees/edit/"+v._id) Edit
-        | 
-        a(href="/panel/employees/delete/"+v._id) Delete
-    - });
+	include ./barraNavegacion.jade
+	.jumbotron
+		.container
+			.row
+				.col-md-12
+					.table-responsive
+						table.table.table-hover
+							thead
+								tr
+									th #
+									th Nombre 
+									th Apellido
+									th E-mail
+									th Opciones
+							tbody
+								- employee.forEach(function(v,i){
+								tr
+									td=i
+									td= v.nombre
+									td= v.apellido
+									td= v.email
+									td
+										a(href='/panel/employees/edit/'+v._id) Editar 
+										span | 
+										a(href='/panel/employees/delete/'+v._id) Eliminar
+								-});
