@@ -13,6 +13,24 @@ var users = require('./routes/user');
 var mongoose = require('mongoose');
 var fixtures = require('mongoose-fixtures');
 
+//EL BOJOOOOOO!!!!!!!
+
+//EL BOJOOOOOO!!!!!!!
+//EL BOJOOOOOO!!!!!!!
+
+
+
+//EL BOJOOOOOO!!!!!!!
+
+
+
+//EL BOJOOOOOO!!!!!!!
+
+
+
+
+
+
 mongoose.connect('mongodb://localhost/finalnode');
 // carga el admin a la bd
 fixtures.load('./fixtures/admin.js');
